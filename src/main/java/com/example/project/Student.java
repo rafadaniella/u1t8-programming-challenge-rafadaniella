@@ -2,81 +2,79 @@ package com.example.project;
 
 public class Student {
     // INSTANCE VARIABLES (private)
-    // first name (String)
-    // last name (String)
-    // graduation year (int)
-    // sum of test scores (double).. should initialize at 0.0
-    // test score count (int) ..should initialize at 0
-    // highest test score (double).. should initialize at 0.0
- 
+    private String firstName;
+    private String lastName;
+    private int gradYear;
+    private double sumTestScores;  // starts at 0.0
+    private int testScoreCount;    // starts at 0
+    private double highestTestScore; // starts at 0.0
+
     // constructor
     public Student(String firstName, String lastName, int gradYear) {
-        //implement code here!
-
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gradYear = gradYear;
+        this.sumTestScores = 0.0;
+        this.testScoreCount = 0;
+        this.highestTestScore = 0.0;
     }
- 
+
     // returns firstName
     public String getFirstName() {
-        //implement code here!
-        return "";
+        return firstName;
     }
- 
+
     // returns lastName
     public String getLastName() {
-        //implement code here!
-        return "";
+        return lastName;
     }
- 
+
     public double getHighestTestScore() {
-        //implement code here!
-        return 50.0; //random double number
+        return highestTestScore;
     }
 
-    public int getTestScoreCount(){
-        //implement code here!
-        return 0;
+    public int getTestScoreCount() {
+        return testScoreCount;
     }
 
-    public int getGradYear(){
-        //implement code here!
-        return 0;
+    public int getGradYear() {
+        return gradYear;
     }
- 
+
     // sets gradYear to newGradYear
     public void setGradYear(int newGradYear) {
-        //implement code here!
+        gradYear = newGradYear;
     }
- 
-    // adds newTestScore to accumulatedTestScores
-    // and increments testScoreCount by 1
-    // set new highest test score 
+
+    // adds newTestScore to accumulatedTestScores and increments testScoreCount by 1
+    // sets new highest test score if applicable
     public void addTestScore(double newTestScore) {
-        //implement code here!
+        sumTestScores += newTestScore;
+        testScoreCount++;
+        if (newTestScore > highestTestScore) {
+            highestTestScore = newTestScore;
+        }
     }
- 
-    // returns true if the student's average test score is greater
-    // than or equal to 65; returns false otherwise (see Note 2 below)
+
+    // returns true if the student's average test score is >= 65
     public boolean isPassing() {
-        //implement code here!
-        return false;
+        if (testScoreCount == 0) return false;
+        return averageTestScore() >= 65.0;
     }
- 
-    // returns the Student's average test score as the
-    // quotient of accumulatedTestScores and testScoreCount
+
+    // returns the Student's average test score
     public double averageTestScore() {
-        //implement code here!
-        return 50.0; //random double number
+        if (testScoreCount == 0) return 0.0;
+        return sumTestScores / testScoreCount;
     }
- 
-    // this method prints all info of a Student object to the console 
-    // I AM NOT TESTING YOU ON THIS METHOD. IT'S FOR YOUR TESTING PURPOSES ONLY.. you don't have to use it
+
+    // print info (for testing, not graded)
     public void printStudentInfo() {
-        System.out.println("Student Full Name: " );
-        System.out.println("Graduation Year: ");
-        System.out.println("Number of tests: ");
-        System.out.println("Average Test Score: ");
-        System.out.println("Highest Test Score: ");
-        System.out.println("Is passing: ");
+        System.out.println("Student Full Name: " + firstName + " " + lastName);
+        System.out.println("Graduation Year: " + gradYear);
+        System.out.println("Number of tests: " + testScoreCount);
+        System.out.println("Average Test Score: " + averageTestScore());
+        System.out.println("Highest Test Score: " + highestTestScore);
+        System.out.println("Is passing: " + isPassing());
     }
- }
- 
+}

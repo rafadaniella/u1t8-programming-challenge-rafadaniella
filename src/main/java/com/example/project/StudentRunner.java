@@ -1,5 +1,11 @@
-public class StudentRunner{
+package com.example.project;
+
+public class StudentRunner {
     public static void main(String[] args) {
-        //use this StudentRunner class if you need to test your code 
+        Student s = new Student("Ella", "Gabinete", 2025);
+        s.addTestScore(80);
+        s.addTestScore(90);
+        s.addTestScore(70);
+        s.printStudentInfo();
     }
 }
